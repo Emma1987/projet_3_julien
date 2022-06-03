@@ -34,16 +34,17 @@
 
 						foreach ($listeActeurs as $acteur) {
 							?>
-							<p><div class="nom_acteur"><?php echo $acteur['acteur']; ?></div></p>
-							<p><?php echo $acteur['description']; ?></p>
-							<img class="logo" src="img/"<?php echo $acteur['logo']; ?>>
-							<?php
-							
+							<p><div class="nom_acteur"><?php echo $acteur['description']; ?></div></p>
+							<p><div class="description_acteur"><?php echo $acteur['description']; ?></div><a href="acteur.php?<?php echo $acteur['id_acteur']; ?>">Lire la suite</a></p> 
+							<img class="logo_acteur" alt="logo des acteurs" src="img/<?php echo $acteur['logo']; ?>">
 
+							<?php
 						}
 					?>
 					</div>
 				</section>
+
+				<?php include('footer.php'); ?>
 			
 		
 
