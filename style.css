@@ -1,42 +1,70 @@
-.container
+
+body
 {
 	display: flex;
 	flex-direction: column;
-
-}
-body
-{
+	flex-wrap: wrap;
+	justify-content: space-around;
 	text-align: justify;
+	background-color: lightgrey;
 
 }
 header
 {
-	background-color: lightgrey;
+	margin-bottom: 20px;
+	width: 100%;
+	height: 15%;
+	text-align: center;
+	font-size: 45px;
+	color: darkred;
+}
+.partenaire
+{
+	width: 50%;
+	align-content: center;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 .logo_gbaf
 {
-	width: 160px;
-	height: 160px;
-	
+	float: left;
 }
-.titre_principal
+.presentation
 {
-	text-align: center;
-	font-size: 50px;
+	width: 100%;
+	height: 25%;
+	text-align: justify;
 
 }
-h2
+h3
 {
 	text-align: center;
+	font-size: 30px;
+	color: red;
 }
-.nom_acteur
+.acteur
 {
-	text-align: center;
+	padding: 5px;
+	border: 4px black solid;
 
 }
 .logo
 {
-	width: 150px;
-	height: 150px;
-
+	padding: 2px;
+	width: 20%;
+	height: 20%;
 }
+.nom_acteur
+{
+	text-decoration: underline;
+	text-align: center;
+	font-size: 20px;
+	color: red;
+}
+footer
+{
+	margin-top: 20px;
+	width: 100%;
+	height: 15%;
+}
+
