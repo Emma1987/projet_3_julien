@@ -38,7 +38,7 @@
 							
 							<p><div class="nom_acteur"><?php echo $acteur['acteur']; ?></div></p>
 							
-							<p><div class='descritpion'><?php echo $acteur['description'] ; ?> <a href="acteur.php?<?php echo $acteur['id_acteur'] ; ?>">Lire la suite</a> </div></p>
+							<p><div class='descritpion'><?php echo $acteur['description'] ; ?> <a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>">Lire la suite</a> </div></p>
 							<?php
 							
 						}
