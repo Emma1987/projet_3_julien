@@ -14,7 +14,7 @@
 		<label for="identifiant">Mon identifiant</label>
 		<input type="text" name="identifiant" label="identifiant" id="identifiant">
 		<label for="password">Mot de passe</label>
-		<input type="password" name="mot de passe" label="mot de passe" id="password">
+		<input type="password" name="password" id="password">
 		<input type="submit" name="envoyer" label="Envoyer">
 	</form>
 	<?php include('footer.php'); ?>
