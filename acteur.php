@@ -1,8 +1,8 @@
 <?php 
 
 	ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 ?>
 
 <?php include('connexion_bdd.php'); ?>
@@ -21,14 +21,18 @@ error_reporting(E_ALL);
 	
 	<h3>Les partenaires</h3>
 	<?php 
-		//verifier que $_get['id'] existe
-	
-		$requeteSQL = "SELECT * FROM acteur WHERE id_acteur = :id";
-		$requete = $db->prepare($requeteSQL);
-		$acteurselect = $requete->execute(['id' => $_GET['id']]);
-		$acteur = $requete->fetch();
-		//verifier qu'acteur ne vaut pas false
-		echo $acteur['description'];
+		
+		//verifier $get['id'] existe
+		if (isset($_GET['id'])) {
+			
+			$requeteSQL = "SELECT * FROM acteur WHERE id_acteur = :id";
+			$requete = $db->prepare($requeteSQL);
+			$acteurselect = $requete->execute(['id' => $_GET['id']]);
+			$acteur = $requete->fetch();
+		
+		if (empty($acteur));
+			echo $acteur['description'];}
+
 
 	?>
 
