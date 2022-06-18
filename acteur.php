@@ -19,10 +19,10 @@
 <body>
 	<?php include('header.php'); ?>
 	
-	<h3>Les partenaires</h3>
+	<h2>Les partenaires</h2>
 	<?php 
 		
-		//verifier $get['id'] existe
+		
 		if (isset($_GET['id'])) {
 			
 			$requeteSQL = "SELECT * FROM acteur WHERE id_acteur = :id";
@@ -30,12 +30,28 @@
 			$acteurselect = $requete->execute(['id' => $_GET['id']]);
 			$acteur = $requete->fetch();
 		
-		if (empty($acteur));
-			echo $acteur['description'];}
+		if (empty($acteur)); ?>
+			<img class="logo_acteur" src="img/<?php echo $acteur['logo']; ?>"></br>
+			
+			<div class='nom_acteur2'>
+			<?php			
+			echo $acteur['acteur'];?></br>
+			</div>
 
+			<div class='description'>
+			<?php
+			echo $acteur['description'];
+		}
 
-	?>
+	?></div>
 
+	<section class="commentaire">
+		<h4>Poster un commentaire</h4>
+		<form method="post" action="commentaire_post.php">
+			<textarea name="commentaire" id="commentaire" rows="5" cols="250"></textarea>
+			<input type="submit" name="envoyer">
+		</form>
+	</section>
 	
 	<?php include('footer.php'); ?>
 	
