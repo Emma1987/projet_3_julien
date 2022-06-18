@@ -42,7 +42,11 @@
 							
 							<p><div class="nom_acteur"><?php echo $acteur['acteur']; ?></div></p>
 							
-							<p><div class='descritpion'><?php echo $acteur['description'] ; ?> <a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>">Lire la suite</a> </div></p>
+							<p><div class='descritpion'>
+								<?php 
+								$description = substr($acteur['description'],0,100).'...';
+								echo $description; ?> 
+								<a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>">Lire la suite</a> </div></p>
 							</div>
 							<?php
 							
