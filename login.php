@@ -1,14 +1,15 @@
+<?php session_start(); ?>
 <?php include('connexion_bdd.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Login</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css">
+		<title>login</title>
 </head>
 
 <body>
-	<?php include('header.php'); ?>
+	<?php include('en_tete.php'); ?>
 	<h1>Se connecter :</h1>
 	<form class='login' method="post" action="login.php">
 		<label for="identifiant">Mon identifiant</label>
@@ -29,17 +30,27 @@
 				'password' => $password,
 			]);
 			$resultat = $requete->fetch();
+			
 
+			if ($resultat) {
+				$_SESSION['username'] = $_POST['identifiant'];
+				echo $_SESSION['username'];
+				
+			}
 
 			if (!$resultat) {
 				echo "mot de passe ou username invalide";		
 		    } else {
-				echo "vous etes connecté!!";
+				echo "vous êtes connecté!!";
 			}
+			if ($resultat) {
+				header(location: "home.php");	
+				exit();
+			}
+			
 
-			//if ($resultat) {
-			//	session_start()
-			//}
+			
+
 
 		}
 	?>
