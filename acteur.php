@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php 
 
 	ini_set('display_errors', 1);
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-	<?php include('header.php'); ?>
+	<?php include('en_tete.php'); ?>
 	
 	<h2>Les partenaires</h2>
 	<?php 
@@ -47,12 +48,22 @@
 
 	<section class="commentaire">
 		<h4>Poster un commentaire</h4>
-		<form method="post" action="commentaire_post.php">
+		<form method="post" action="acteur.php">
 			<textarea name="commentaire" id="commentaire" rows="5" cols="250"></textarea>
 			<input type="submit" name="envoyer">
 		</form>
 	</section>
-	
+	<?php if (isset($_POST['envoyer'])) && (!empty($_POST['commentaire'])) && (isset($_SESSION['username'])) {
+
+		$requeteSQL = $db->prepare("INSERT INTO VALUES  ");
+		$requeteSQL->execute();
+		
+	} 
+
+
+
+
+	?>
 	<?php include('footer.php'); ?>
 	
 
