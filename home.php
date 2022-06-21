@@ -1,3 +1,6 @@
+<?php
+		 session_start();
+ ?>
 <?php include('connexion_bdd.php'); ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +13,7 @@
 	<body>
 		
 			<header>
-			<?php include('header.php'); ?>
+			<?php include('en_tete.php'); ?>
 			</header>
 			
 
