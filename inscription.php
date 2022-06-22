@@ -42,36 +42,40 @@
 			<input type="submit" name="inscription" label="inscription">
 	</form>
 
-	<?php     //on test les variable nom et prenom et on les insere dans la bdd
-			if (isset($_POST['nom']) && isset($_POST['prenom'])){
-				$nom = $_POST['nom'];
-				$prenom = $_POST['prenom'];
-				$requeteSql = INSERT INTO account ('nom','prenom') VALUES ('$nom','$prenom');
-				$requete = $db->prepare($requeteSql);
-				echo "nouveau user creer"; } 
-		     
-		     // on test la variable username 
-			//if (isset($_POST['username']) && empty($_POST[username])){
-			//	$requeteSql = "SELECT * FROM account WHERE username = :username";
-			//	$listeUsername = $db->prepare($requeteSql);
-				//on demande la liste des username present dans la base et on la compare au username de $_post
-			//if ($_POST['username'] <> $listeUsername) {
-			//		$requeteINSERT = "INSERT INTO account VALUES (username)";
-			//		
-			//	}
-
-
-			//verifier que le username n'existe pas dans ma bdd
-		}
-		//if (isset($_POST['password']) && empty($_POST['password'])){
-			//hacher le mot de passe avant de lenregistrer
-		//}
-
-			 
-
-
-
-
+	<?php
+		if (isset($_POST['inscription']))
+			{
+				$nom = htmlspecialchars($_POST['nom']);
+				$prenom = htmlspecialchars($_POST['prenom']);
+				$username = htmlspecialchars($_POST['username']);
+				//$password = htmlspecialchars($_POST['password']);
+				//$password = sha1($_POST['password']);
+				$reponse = htmlspecialchars($_POST['reponse']);
+		     		
+		    //on vérifie si l'un des champ est vide 
+		    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['reponse']))
+		    	{
+		     		//on teste si le username est deja présent dans la bdd
+		     		$requete = $bd->prepare("SELECT * FROM account WHERE username = ?");
+		     		$requete->execute(array($username));
+		     		$usernameexist = $requete->rowcount();
+		     		
+		     		//on hache le mot de passe
+		     		$passwordhach = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		     	//si le username n'existe pas on insere les données dans la base
+		   		if ($usernameexist == 0){
+		     						$requete = $bd->prepare("INSERT INTO account(nom,prenom,username,password,reponse) VALUES(:nom,:prenom,:username,:password,:reponse)");
+		     						$requete->execute(array(
+		     							'nom' => $nom, 
+		     							'prenom' => $prenom,
+		     							'username' => $username,
+		     							'password' => $passwordhach,
+		     							'reponse' => $reponse));
+		   								}
+		   								else {echo "Username existe déja!";}		
+		   		}
+		   		else {echo "Tous les champs doivent être rempli!";}
+			}
 
 
 	 ?>
