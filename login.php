@@ -30,23 +30,21 @@
 				'password' => $password,
 			]);
 			$resultat = $requete->fetch();
-			
+			//header('Location: home.php');
+			//exit();}
 
-			if ($resultat) {
-				$_SESSION['username'] = $_POST['identifiant'];
-				echo $_SESSION['username'];
+			//if ($resultat) {
+			//	$_SESSION['username'] = $_POST['identifiant'];
+			//	echo $_SESSION['username'];
 				
-			}
+			//}
 
-			if (!$resultat) {
-				echo "mot de passe ou username invalide";		
-		    } else {
-				echo "vous êtes connecté!!";
-			}
-			if ($resultat) {
-				header(location: "home.php");	
-				exit();
-			}
+			//if (!$resultat) {
+			//	echo "mot de passe ou username invalide";		
+		    //} else {
+			//	echo "vous êtes connecté!!";
+			//}
+			
 			
 
 			
